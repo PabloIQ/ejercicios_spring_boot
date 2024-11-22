@@ -32,8 +32,15 @@ public class Controlador {
               }
               res += "</table>";
         } else {
-              res = "<h3 style='color:red;'>Por favor, ingresa un número entre 1 y 10.</h3>";
+              res = "<link rel=stylesheet href='estilos.css'><h3 style='color:red;'>Por favor, ingresa un número entre 1 y 10.</h3>";
                 }
+		return res;
+	}
+	
+	@PostMapping("/promedioCalificaciones")
+	public String ejercicio3(@RequestParam int calificaciones) {
+		String res = "";
+		
 		return res;
 	}
 }
