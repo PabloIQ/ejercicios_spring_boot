@@ -90,4 +90,12 @@ public class Controlador {
 		}
 		return ret + frase + res;
 	}
+	
+	@PostMapping("/encuesta")
+	public String ejercicio5 (@RequestParam String satisfaccion) {
+		String res = "";
+		String ret = "<link rel=stylesheet href='estilos.css'>";
+		res += "<h2>Gracias por evaluar tu satisfacción: " + satisfaccion + " / 5" + "</h2>";
+		return ret + res;
+	}
 }
