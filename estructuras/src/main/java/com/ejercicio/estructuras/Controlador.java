@@ -38,9 +38,41 @@ public class Controlador {
 	}
 	
 	@PostMapping("/promedioCalificaciones")
-	public String ejercicio3(@RequestParam int calificaciones) {
+	public String ejercicio3(@RequestParam String calificaciones) {
 		String res = "";
-		
+        String[] notas = calificaciones.split(",");  
+        double suma = 0;
+        int cantidad = 0;
+        boolean hayErrores = false;
+            
+        res += "<link rel='stylesheet' href='estilos.css'>";
+        res += "<h2>Cálculo de la media de los números</h2><table><tr><th>Número</th><th>Valor</th></tr>";
+
+        for (String numeroStr : notas) {
+            double numero = Double.parseDouble(numeroStr.trim());
+            suma += numero;
+            cantidad++;
+                    
+            res += "<tr><td>" + numeroStr.trim() + "</td><td>" + numero + "</td></tr>";
+        }
+        
+        if (!hayErrores && cantidad > 0) {
+            double media = suma / cantidad;
+            res += "<tr><td><strong>Media:</strong></td><td>" + String.format("%.2f", media) + "</td></tr>";
+        } else if (cantidad == 0) {
+            res = "<h3 style='color:red;'>No se proporcionaron números válidos.</h3>";
+        }
+        
+        res += "</table>";
+        return (String) res;
+	}
+	
+	@PostMapping("/calcularIMC")
+	public String ejercicio4 (@RequestParam int peso, int altura) {
+		String res = "";
+		if (peso > 0 && altura > 0) {
+			res += "<link rel=stylesheet href='estilos.css'>";
+		}
 		return res;
 	}
 }
