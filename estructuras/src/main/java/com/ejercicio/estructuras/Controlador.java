@@ -68,11 +68,26 @@ public class Controlador {
 	}
 	
 	@PostMapping("/calcularIMC")
-	public String ejercicio4 (@RequestParam int peso, int altura) {
-		String res = "";
+	public String ejercicio4 (@RequestParam double peso, double altura) {
+		double res = 0.0;
+		String ret = "<link rel=stylesheet href='estilos.css'>";
+		String frase = "";
 		if (peso > 0 && altura > 0) {
-			res += "<link rel=stylesheet href='estilos.css'>";
+			frase = "<h2>El IMC es: </h2>";
+			
+			res = peso / (altura * altura);
+			if (res < 18.5) {
+	            ret += "Tienes bajo peso.";
+	        } else if (res >= 18.5 && res < 24.9) {
+	            ret += "Tienes un peso normal.";
+	        } else if (res >= 25 && res < 29.9) {
+	            ret += "Tienes sobrepeso.";
+	        } else {
+	            ret += "Tienes obesidad.";
+	        }
+		} else {
+			ret += "<h2>Debe introducir valores positivos</h2>";
 		}
-		return res;
+		return ret + frase + res;
 	}
 }
