@@ -106,8 +106,8 @@ public class Controlador {
 	    String contrasena = "";
 	    res += "<link rel=stylesheet href='estilos.css'>";
 	    if (longitud <= 0) {
-	        sol += "Longitud no válida";
-	        contrasena += "No se ha podido generar ninguna contraseña";
+	        sol += "Longitud no válida (negativa)";
+	        contrasena += "No generó ninguna contraseña";
 	    } else {
 	        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	        for (int i = 0; i < longitud; i++) {
@@ -118,4 +118,22 @@ public class Controlador {
 	    res += "<h1>" + sol + "<br/> <br/></h1> <h2> La contraseña resultante es: <strong>" + contrasena + "</strong></h2>";
 	    return res;
 	}
+	
+	@PostMapping("/sumatoria")
+	public String ejercicio7 (@RequestParam int numero) {
+		String ret = "";
+	    int suma = 0;
+	    ret += "<link rel=stylesheet href='estilos.css'>";
+	    if (numero <= 0) {
+	        return "<h1>Introduzca un número positivo</h1>";
+	    } else {
+	        for (int i = 1; i <= numero; i++) {
+	            suma += i;
+	        }
+	        return ret + "<h2>La suma de los números desde 1 hasta " + numero + " es: " + suma + "</h2>";
+	    }
+	}
+	
+	
+	public String 
 }
