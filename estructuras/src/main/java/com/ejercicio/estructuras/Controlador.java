@@ -133,7 +133,24 @@ public class Controlador {
 	        return ret + "<h2>La suma de los números desde 1 hasta " + numero + " es: " + suma + "</h2>";
 	    }
 	}
+
+	@PostMapping("/factorial")
+	public String ejercicio8 (@RequestParam int numero) {
+		String ret = "";
+		ret += "<link rel=stylesheet href='estilos.css'>";
+	    if (numero < 0) {
+	        return "<h1>Introduzca un número positivo</h1>";
+	    } else {
+	        int resultado = calcularFactorial(numero);
+	        return ret + "<h2>El factorial de " + numero + " es: " + resultado + "</h2>";
+	    }
+	}
 	
-	
-	public String 
+	public int calcularFactorial(int numero) {
+	    int factorial = 1;
+	    for (int i = 1; i <= numero; i++) {
+	        factorial *= i;
+	    }
+	    return factorial;
+	}
 }
