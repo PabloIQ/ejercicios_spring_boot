@@ -98,4 +98,24 @@ public class Controlador {
 		res += "<h2>Gracias por evaluar tu satisfacción: " + satisfaccion + " / 5" + "</h2>";
 		return ret + res;
 	}
+	
+	@PostMapping("/generarContrasena")
+	public String ejercicio6 (@RequestParam int longitud) {
+	    String res = "";
+	    String sol = "";
+	    String contrasena = "";
+	    res += "<link rel=stylesheet href='estilos.css'>";
+	    if (longitud <= 0) {
+	        sol += "Longitud no válida";
+	        contrasena += "No se ha podido generar ninguna contraseña";
+	    } else {
+	        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	        for (int i = 0; i < longitud; i++) {
+	            int indice = (int) (Math.random() * caracteres.length());
+	            contrasena += caracteres.charAt(indice);
+	        }
+	    }
+	    res += "<h1>" + sol + "<br/> <br/></h1> <h2> La contraseña resultante es: <strong>" + contrasena + "</strong></h2>";
+	    return res;
+	}
 }
